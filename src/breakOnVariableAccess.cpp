@@ -2,11 +2,16 @@
 
 #include "breakOnVariableAccess.h"
 
-template<class T>
-T& breakOnVariableAccess(T& variable)
+template <class T>
+struct DebugThisVariable
 {
-	return variable;
-}
+	T value;
+
+	T& operator()()
+	{
+		return value;
+	}
+};
 
 
 class MyClass
@@ -31,8 +36,8 @@ void CPPTestBreakOnVariableAccess::run(void)
 // replace:
 	//MyClass* obj;
 // with:
-	MyClass* obj_DEBUG;
-	#define  obj breakOnVariableAccess(obj_DEBUG)
+	DebugThisVariable<MyClass*> obj;
+	#define  obj obj()
 //////////////////////////////////////////////
 
 	obj = new MyClass;
