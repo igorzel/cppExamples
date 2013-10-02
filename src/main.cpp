@@ -1,4 +1,5 @@
 #include "enable_if.h"
+#include "breakOnVariableAccess.h"
 
 
 template<class T>
@@ -15,7 +16,8 @@ public:
 
 int main()
 {
-	TestRunner<CPPTestEnableIf> testRun1;
+	//TestRunner<CPPTestEnableIf> testRun1;
+	TestRunner<CPPTestBreakOnVariableAccess> testRun2;
 
 	return 0;
 }
